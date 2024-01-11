@@ -17,15 +17,41 @@
         <section id="form-fields">
             <div class="form-field">
                 <label>Имя</label>
-                <input type="text" name="fullname" placeholder="Иван Иванов" />
+                <input type="text" name="firstname" placeholder="Иван" />
+
+                <div class="errors">
+                    <p class="error">Длина имени должна быть больше 3</p>
+                    <p class="error">Имя должно содержать только кириллицу</p>
+                </div>
+            </div>
+            <div class="form-field">
+                <label>Фамилия</label>
+                <input type="text" name="lastname" placeholder="Иванов" />
+
+                <div class="errors">
+                    <p class="error">Длина фамилии должна быть больше 4</p>
+                    <p class="error">Фамилия должна содержать только кириллицу</p>
+                </div>
             </div>
             <div class="form-field">
                 <label>Почта</label>
                 <input type="email" name="email" placeholder="lalala@gmail.com" />
+
+                <div class="errors">
+                    <p class="error">Введите почту правильно</p>
+                </div>
             </div>
             <div class="form-field">
                 <label>Придумайте пароль</label>
                 <input type="password" name="password" placeholder="********" />
+
+                <div class="errors">
+                    <p class="error">Длина должна быть не меньше 8</p>
+                    <p class="error">Только латинские буквы</p>
+                    <p class="error">Хотя бы одна заглавная буква</p>
+                    <p class="error">Хотя бы одна прописная буква</p>
+                    <p class="error">Хотя бы один знак препинания</p>
+                </div>
             </div>
         </section>
 
