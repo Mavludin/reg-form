@@ -94,6 +94,8 @@ button {
     display: flex;
     flex-direction: column;
 
+    display: none;
+
     row-gap: 5px;
     margin-top: 10px;
 }
@@ -101,4 +103,8 @@ button {
 .error {
     color: crimson;
     margin: 0;
+
+    margin-top: 5px;
+
+    display: none;
 }
