@@ -1,6 +1,7 @@
 const regForm = document.forms.regForm;
 
 const firstnameField = regForm.firstname;
+const lastnameField = regForm.lastname;
 
 const containsOnlyRussianLetters = (string) => {
     return /^[а-я]+$/gi.test(string);
@@ -9,6 +10,7 @@ const containsOnlyRussianLetters = (string) => {
 regForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    // firstname validation
     const firstnameErrorFields = firstnameField.parentElement.children;
     const firstnameFieldValue = firstnameField.value;
 
@@ -24,4 +26,19 @@ regForm.addEventListener('submit', (e) => {
         firstnameErrorFields.namedItem('alphabet').style.display = 'block';
     }
 
+    // lastname validation
+    const lastnameFieldErrorFields = lastnameField.parentElement.children;
+    const lastnameFieldFieldValue = lastnameField.value;
+
+    if (lastnameFieldFieldValue.length >= 3) {
+        lastnameFieldErrorFields.namedItem('length').style.display = 'none';
+    } else {
+        lastnameFieldErrorFields.namedItem('length').style.display = 'block';
+    }
+
+    if (containsOnlyRussianLetters(lastnameFieldFieldValue)) {
+        lastnameFieldErrorFields.namedItem('alphabet').style.display = 'none';
+    } else {
+        lastnameFieldErrorFields.namedItem('alphabet').style.display = 'block';
+    }
 })
