@@ -90,16 +90,6 @@ button {
     cursor: pointer;
 }
 
-.errors {
-    display: flex;
-    flex-direction: column;
-
-    display: none;
-
-    row-gap: 5px;
-    margin-top: 10px;
-}
-
 .error {
     color: crimson;
     margin: 0;
