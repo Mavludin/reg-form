@@ -2,9 +2,14 @@ const regForm = document.forms.regForm;
 
 const firstnameField = regForm.firstname;
 const lastnameField = regForm.lastname;
+const emailField = regForm.email;
 
 const containsOnlyRussianLetters = (string) => {
     return /^[а-я]+$/gi.test(string);
+}
+
+const isEmailValid = (string) => {
+    return /^[a-z][a-z._0-9]+@[a-z]+\.[a-z]{2,3}$/.test(string);
 }
 
 regForm.addEventListener('submit', (e) => {
@@ -41,4 +46,15 @@ regForm.addEventListener('submit', (e) => {
     } else {
         lastnameFieldErrorFields.namedItem('alphabet').style.display = 'block';
     }
+
+    // email validation
+    const emailFieldValue = emailField.value;
+    const emailErrorField = emailField.nextElementSibling;
+
+    if (isEmailValid(emailFieldValue)) {
+        emailErrorField.style.display = 'none';
+    } else {
+        emailErrorField.style.display = 'block';
+    }
+
 })
