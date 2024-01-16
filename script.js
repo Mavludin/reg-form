@@ -29,6 +29,14 @@ const containsPunctuationMarks = (string) => {
     return /[^A-Za-z0-9\s]/.test(string)
 }
 
+const toggleErrorField = (condition, errorFields, fieldName) => {
+    if (condition) {
+        errorFields.namedItem(fieldName).style.display = 'none';
+    } else {
+        errorFields.namedItem(fieldName).style.display = 'block';
+    }
+}
+
 regForm.addEventListener('submit', (e) => {
     e.preventDefault();
 
@@ -36,33 +44,15 @@ regForm.addEventListener('submit', (e) => {
     const firstnameErrorFields = firstnameField.parentElement.children;
     const firstnameFieldValue = firstnameField.value;
 
-    if (firstnameFieldValue.length >= 3) {
-        firstnameErrorFields.namedItem('length').style.display = 'none';
-    } else {
-        firstnameErrorFields.namedItem('length').style.display = 'block';
-    }
-
-    if (containsOnlyRussianLetters(firstnameFieldValue)) {
-        firstnameErrorFields.namedItem('alphabet').style.display = 'none';
-    } else {
-        firstnameErrorFields.namedItem('alphabet').style.display = 'block';
-    }
+    toggleErrorField(firstnameFieldValue.length >= 3, firstnameErrorFields, 'length')
+    toggleErrorField(containsOnlyRussianLetters(firstnameFieldValue), firstnameErrorFields, 'alphabet')
 
     // lastname validation
     const lastnameFieldErrorFields = lastnameField.parentElement.children;
     const lastnameFieldValue = lastnameField.value;
 
-    if (lastnameFieldValue.length >= 3) {
-        lastnameFieldErrorFields.namedItem('length').style.display = 'none';
-    } else {
-        lastnameFieldErrorFields.namedItem('length').style.display = 'block';
-    }
-
-    if (containsOnlyRussianLetters(lastnameFieldValue)) {
-        lastnameFieldErrorFields.namedItem('alphabet').style.display = 'none';
-    } else {
-        lastnameFieldErrorFields.namedItem('alphabet').style.display = 'block';
-    }
+    toggleErrorField(lastnameFieldValue.length >= 3, lastnameFieldErrorFields, 'length')
+    toggleErrorField(containsOnlyRussianLetters(lastnameFieldValue), lastnameFieldErrorFields, 'length')
 
     // email validation
     const emailFieldValue = emailField.value;
@@ -78,34 +68,10 @@ regForm.addEventListener('submit', (e) => {
     const passwordFieldErrorFields = passwordField.parentElement.children;
     const passwordFieldValue = passwordField.value;
 
-    if (passwordFieldValue.length >= 8) {
-        passwordFieldErrorFields.namedItem('length').style.display = 'none';
-    } else {
-        passwordFieldErrorFields.namedItem('length').style.display = 'block';
-    }
-
-    if (containsOnlyLatinLetters(passwordFieldValue)) {
-        passwordFieldErrorFields.namedItem('alphabet').style.display = 'none';
-    } else {
-        passwordFieldErrorFields.namedItem('alphabet').style.display = 'block';
-    }
-
-    if (containsUppercaseLetter(passwordFieldValue)) {
-        passwordFieldErrorFields.namedItem('uppercase').style.display = 'none';
-    } else {
-        passwordFieldErrorFields.namedItem('uppercase').style.display = 'block';
-    }
-
-    if (containsLowercaseLetter(passwordFieldValue)) {
-        passwordFieldErrorFields.namedItem('lowercase').style.display = 'none';
-    } else {
-        passwordFieldErrorFields.namedItem('lowercase').style.display = 'block';
-    }
-
-    if (containsPunctuationMarks(passwordFieldValue)) {
-        passwordFieldErrorFields.namedItem('alphanumeric').style.display = 'none';
-    } else {
-        passwordFieldErrorFields.namedItem('alphanumeric').style.display = 'block';
-    }
+    toggleErrorField(passwordFieldValue.length >= 8, passwordFieldErrorFields, 'length')
+    toggleErrorField(containsOnlyLatinLetters(passwordFieldValue), passwordFieldErrorFields, 'alphabet')
+    toggleErrorField(containsUppercaseLetter(passwordFieldValue), passwordFieldErrorFields, 'uppercase')
+    toggleErrorField(containsLowercaseLetter(passwordFieldValue), passwordFieldErrorFields, 'lowercase')
+    toggleErrorField(containsPunctuationMarks(passwordFieldValue), passwordFieldErrorFields, 'alphanumeric')
 
 })
