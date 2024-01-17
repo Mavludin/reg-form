@@ -29,11 +29,11 @@ const containsPunctuationMarks = (string) => {
   return /[^A-Za-z0-9\s]/.test(string);
 };
 
-const toggleErrorField = (condition, errorFields, fieldName) => {
+const toggleErrorMessage = (condition, errorMessages, errorType) => {
   if (condition) {
-    errorFields.namedItem(fieldName).style.display = "none";
+    errorMessages.namedItem(errorType).style.display = "none";
   } else {
-    errorFields.namedItem(fieldName).style.display = "block";
+    errorMessages.namedItem(errorType).style.display = "block";
   }
 };
 
@@ -41,72 +41,72 @@ regForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   // firstname validation
-  const firstnameErrorFields = firstnameField.parentElement.children;
+  const firstnameErrorMessages = firstnameField.parentElement.children;
   const firstnameFieldValue = firstnameField.value;
 
-  toggleErrorField(
+  toggleErrorMessage(
     firstnameFieldValue.length >= 3,
-    firstnameErrorFields,
+    firstnameErrorMessages,
     "length"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsOnlyRussianLetters(firstnameFieldValue),
-    firstnameErrorFields,
+    firstnameErrorMessages,
     "alphabet"
   );
 
   // lastname validation
-  const lastnameFieldErrorFields = lastnameField.parentElement.children;
+  const lastnameFieldErrorMessages = lastnameField.parentElement.children;
   const lastnameFieldValue = lastnameField.value;
 
-  toggleErrorField(
+  toggleErrorMessage(
     lastnameFieldValue.length >= 3,
-    lastnameFieldErrorFields,
+    lastnameFieldErrorMessages,
     "length"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsOnlyRussianLetters(lastnameFieldValue),
-    lastnameFieldErrorFields,
+    lastnameFieldErrorMessages,
     "alphabet"
   );
 
   // email validation
   const emailFieldValue = emailField.value;
-  const emailErrorField = emailField.nextElementSibling;
+  const emailErrorMessage = emailField.nextElementSibling;
 
   if (isEmailValid(emailFieldValue)) {
-    emailErrorField.style.display = "none";
+    emailErrorMessage.style.display = "none";
   } else {
-    emailErrorField.style.display = "block";
+    emailErrorMessage.style.display = "block";
   }
 
   // password validation
-  const passwordFieldErrorFields = passwordField.parentElement.children;
+  const passwordFieldErrorMessages = passwordField.parentElement.children;
   const passwordFieldValue = passwordField.value;
 
-  toggleErrorField(
+  toggleErrorMessage(
     passwordFieldValue.length >= 8,
-    passwordFieldErrorFields,
+    passwordFieldErrorMessages,
     "length"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsOnlyLatinLetters(passwordFieldValue),
-    passwordFieldErrorFields,
+    passwordFieldErrorMessages,
     "alphabet"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsUppercaseLetter(passwordFieldValue),
-    passwordFieldErrorFields,
+    passwordFieldErrorMessages,
     "uppercase"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsLowercaseLetter(passwordFieldValue),
-    passwordFieldErrorFields,
+    passwordFieldErrorMessages,
     "lowercase"
   );
-  toggleErrorField(
+  toggleErrorMessage(
     containsPunctuationMarks(passwordFieldValue),
-    passwordFieldErrorFields,
+    passwordFieldErrorMessages,
     "alphanumeric"
   );
 });
