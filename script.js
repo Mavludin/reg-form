@@ -13,8 +13,8 @@ const isEmailValid = (string) => {
   return /^[a-z][a-z._0-9]+@[a-z]+\.[a-z]{2,3}$/.test(string);
 };
 
-const containsOnlyLatinLetters = (string) => {
-  return /^[a-z]+$/gi.test(string);
+const containsADigit = (string) => {
+  return /[0-9]/.test(string);
 };
 
 const containsUppercaseLetter = (string) => {
@@ -90,9 +90,9 @@ regForm.addEventListener("submit", (e) => {
     "length"
   );
   toggleErrorMessage(
-    containsOnlyLatinLetters(passwordFieldValue),
+    containsADigit(passwordFieldValue),
     passwordFieldErrorMessages,
-    "alphabet"
+    "digit"
   );
   toggleErrorMessage(
     containsUppercaseLetter(passwordFieldValue),
