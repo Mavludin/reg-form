@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,48 +9,52 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 
-    <form name="regForm">
-        <header id="form-header">
-            <h1>Регистрация</h1>
-        </header>
+<form name="regForm">
+    <header id="form-header">
+        <h1>Регистрация</h1>
+    </header>
 
-        <section id="form-fields">
-            <div class="form-field">
-                <label>Имя</label>
-                <input type="text" name="firstname" placeholder="Иван" />
+    <section id="form-fields">
+        <div class="form-field">
+            <label>Имя</label>
+            <input type="text" name="firstname" placeholder="Иван" />
 
-                <p class="error" name="length">Длина имени должна быть больше 3</p>
-                <p class="error" name="alphabet">Имя должно содержать только кириллицу</p>
-            </div>
-            <div class="form-field">
-                <label>Фамилия</label>
-                <input type="text" name="lastname" placeholder="Иванов" />
+            <p class="error" name="length">Длина имени должна быть больше 3</p>
+            <p class="error" name="alphabet">Имя должно содержать только кириллицу</p>
+        </div>
+        <div class="form-field">
+            <label>Фамилия</label>
+            <input type="text" name="lastname" placeholder="Иванов" />
 
-                <p class="error" name="length">Длина фамилии должна быть больше 4</p>
-                <p class="error" name="alphabet">Фамилия должна содержать только кириллицу</p>
-            </div>
-            <div class="form-field">
-                <label>Почта</label>
-                <input type="email" name="email" placeholder="lalala@gmail.com" />
+            <p class="error" name="length">Длина фамилии должна быть больше 4</p>
+            <p class="error" name="alphabet">Фамилия должна содержать только кириллицу</p>
+        </div>
+        <div class="form-field">
+            <label>Почта</label>
+            <input type="email" name="email" placeholder="lalala@gmail.com" />
 
-                <p class="error" name="email">Введите почту правильно</p>
-            </div>
-            <div class="form-field">
-                <label>Придумайте пароль</label>
-                <input type="password" name="password" placeholder="********" />
+            <p class="error" name="emailError">Введите почту правильно</p>
+        </div>
+        <div class="form-field">
+            <label>Придумайте пароль</label>
+            <input type="password" name="password" placeholder="********" />
 
-                <p class="error" name="length">Длина должна быть не меньше 8</p>
-                <p class="error" name="digit">Хотя бы одна цифра</p>
-                <p class="error" name="uppercase">Хотя бы одна заглавная буква</p>
-                <p class="error" name="lowercase">Хотя бы одна прописная буква</p>
-                <p class="error" name="punctuation">Хотя бы один знак пунктуации</p>
-            </div>
-        </section>
+            <p class="error" name="length">Длина должна быть не меньше 8</p>
+            <p class="error" name="digit">Хотя бы одна цифра</p>
+            <p class="error" name="uppercase">Хотя бы одна заглавная буква</p>
+            <p class="error" name="lowercase">Хотя бы одна прописная буква</p>
+            <p class="error" name="punctuation">Хотя бы один знак пунктуации: .,?\/#!$%\^&\*;:{}=\-_`~()</p>
+        </div>
+    </section>
 
-        <button>Зарегистрироваться</button>
-    </form>
+    <button>Зарегистрироваться</button>
+</form>
 
+<div id="modal">
+    <h1>Все ок!</h1>
+</div>
 
-    <script src="./script.js"></script>
+<script src="./script.js"></script>
 </body>
+
 </html>
